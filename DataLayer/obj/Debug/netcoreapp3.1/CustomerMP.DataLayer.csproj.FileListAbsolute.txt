@@ -1,0 +1,48 @@
+D:\VsCodeUygulama\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.deps.json
+D:\VsCodeUygulama\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.dll
+D:\VsCodeUygulama\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.pdb
+D:\VsCodeUygulama\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.csproj.AssemblyReference.cache
+D:\VsCodeUygulama\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\VsCodeUygulama\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.AssemblyInfoInputs.cache
+D:\VsCodeUygulama\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.AssemblyInfo.cs
+D:\VsCodeUygulama\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.csproj.CoreCompileInputs.cache
+D:\VsCodeUygulama\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.dll
+D:\VsCodeUygulama\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.pdb
+D:\VsCodeUygulama\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.runtimeconfig.json
+D:\VsCodeUygulama\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.runtimeconfig.dev.json
+D:\VsCodeUygulama\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.Entities.dll
+D:\VsCodeUygulama\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.Entities.pdb
+D:\VsCodeUygulama\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.csproj.CopyComplete
+D:\VsCodeUygulama\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.genruntimeconfig.cache
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.deps.json
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.runtimeconfig.json
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.runtimeconfig.dev.json
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.dll
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.pdb
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.Entities.dll
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.Entities.pdb
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.csproj.AssemblyReference.cache
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.AssemblyInfoInputs.cache
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.AssemblyInfo.cs
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.csproj.CopyComplete
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.dll
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.pdb
+C:\Users\MDSoft\Desktop\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.genruntimeconfig.cache
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.deps.json
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.runtimeconfig.json
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.runtimeconfig.dev.json
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.dll
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.DataLayer.pdb
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.Entities.dll
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\bin\Debug\netcoreapp3.1\CustomerMP.Entities.pdb
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.csproj.AssemblyReference.cache
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.AssemblyInfoInputs.cache
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.AssemblyInfo.cs
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.csproj.CoreCompileInputs.cache
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.csproj.CopyComplete
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.dll
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.pdb
+D:\OKAN D\Yeni klasör\CustomerMP\DataLayer\obj\Debug\netcoreapp3.1\CustomerMP.DataLayer.genruntimeconfig.cache

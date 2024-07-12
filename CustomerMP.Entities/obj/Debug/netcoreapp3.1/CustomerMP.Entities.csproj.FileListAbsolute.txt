@@ -1,0 +1,30 @@
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Entities\bin\Debug\netcoreapp3.1\CustomerMP.Entities.deps.json
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Entities\bin\Debug\netcoreapp3.1\CustomerMP.Entities.dll
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Entities\bin\Debug\netcoreapp3.1\CustomerMP.Entities.pdb
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.csproj.AssemblyReference.cache
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.AssemblyInfoInputs.cache
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.AssemblyInfo.cs
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.csproj.CoreCompileInputs.cache
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.dll
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.pdb
+C:\Users\MDSoft\Desktop\CustomerMP\CustomerMP.Entities\bin\Debug\netcoreapp3.1\CustomerMP.Entities.deps.json
+C:\Users\MDSoft\Desktop\CustomerMP\CustomerMP.Entities\bin\Debug\netcoreapp3.1\CustomerMP.Entities.dll
+C:\Users\MDSoft\Desktop\CustomerMP\CustomerMP.Entities\bin\Debug\netcoreapp3.1\CustomerMP.Entities.pdb
+C:\Users\MDSoft\Desktop\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.csproj.AssemblyReference.cache
+C:\Users\MDSoft\Desktop\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MDSoft\Desktop\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.AssemblyInfoInputs.cache
+C:\Users\MDSoft\Desktop\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.AssemblyInfo.cs
+C:\Users\MDSoft\Desktop\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.csproj.CoreCompileInputs.cache
+C:\Users\MDSoft\Desktop\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.dll
+C:\Users\MDSoft\Desktop\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.pdb
+D:\OKAN D\Yeni klasör\CustomerMP\CustomerMP.Entities\bin\Debug\netcoreapp3.1\CustomerMP.Entities.deps.json
+D:\OKAN D\Yeni klasör\CustomerMP\CustomerMP.Entities\bin\Debug\netcoreapp3.1\CustomerMP.Entities.dll
+D:\OKAN D\Yeni klasör\CustomerMP\CustomerMP.Entities\bin\Debug\netcoreapp3.1\CustomerMP.Entities.pdb
+D:\OKAN D\Yeni klasör\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.csproj.AssemblyReference.cache
+D:\OKAN D\Yeni klasör\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\OKAN D\Yeni klasör\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.AssemblyInfoInputs.cache
+D:\OKAN D\Yeni klasör\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.AssemblyInfo.cs
+D:\OKAN D\Yeni klasör\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.csproj.CoreCompileInputs.cache
+D:\OKAN D\Yeni klasör\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.dll
+D:\OKAN D\Yeni klasör\CustomerMP\CustomerMP.Entities\obj\Debug\netcoreapp3.1\CustomerMP.Entities.pdb

@@ -1,0 +1,10 @@
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Business\bin\Debug\netcoreapp3.1\CustomerMP.Business.deps.json
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Business\bin\Debug\netcoreapp3.1\CustomerMP.Business.dll
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Business\bin\Debug\netcoreapp3.1\CustomerMP.Business.pdb
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Business\obj\Debug\netcoreapp3.1\CustomerMP.Business.csproj.AssemblyReference.cache
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Business\obj\Debug\netcoreapp3.1\CustomerMP.Business.GeneratedMSBuildEditorConfig.editorconfig
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Business\obj\Debug\netcoreapp3.1\CustomerMP.Business.AssemblyInfoInputs.cache
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Business\obj\Debug\netcoreapp3.1\CustomerMP.Business.AssemblyInfo.cs
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Business\obj\Debug\netcoreapp3.1\CustomerMP.Business.csproj.CoreCompileInputs.cache
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Business\obj\Debug\netcoreapp3.1\CustomerMP.Business.dll
+D:\VsCodeUygulama\CustomerMP\CustomerMP.Business\obj\Debug\netcoreapp3.1\CustomerMP.Business.pdb
