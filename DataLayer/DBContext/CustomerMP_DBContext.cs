@@ -21,6 +21,23 @@ namespace CustomerMP.DataLayer.DBContext
 
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = 1,
+                    Username = "superadmin",
+                    Password = "admin", 
+                    Role = "Admin"
+                },
+                new User
+                {
+                    Id = 2,
+                    Username = "guest",
+                    Password = "guest",
+                    Role = "Guest"
+                }
+            );
+
         }
     }
 }

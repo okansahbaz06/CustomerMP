@@ -38,7 +38,7 @@
                 <div class="col-md-6 mb-1 ml-3">
                     <label style="padding-right:25px;">Bilet Sahibi (Müşteri) </label>
                     <select name="CustomerId" class="col-sm-4 form-control">
-                        <option value="">Müşteri Yok</option> <!-- Boş müşteri seçeneği -->
+                        <option value="">Müşteri Yok</option> 
                         @foreach (var customer in ViewBag.Customers)
                         {
                             <option value="@customer.Id" @(customer.Id == Model.CustomerId ? "selected" : "")>

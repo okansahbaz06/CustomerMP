@@ -34,10 +34,10 @@ namespace CustomerMP.UI.Controllers
                     Detail = value.Detail,
                     Location = value.Location,
                     Time = value.Time,
-                    Customer = value.Customer // Customer nullable olduğu için bu satırda null olabilir
+                    Customer = value.Customer 
                 };
 
-                // Customer null ise ona varsayılan değerler veriyoruz
+                
                 if (ticket.Customer == null)
                 {
                     ticket.Customer = new Customer
@@ -78,12 +78,6 @@ namespace CustomerMP.UI.Controllers
             return RedirectToAction("Index");
         }
 
-        //[HttpPost]
-        //public IActionResult AddTicket(Ticket tickets)
-        //{
-        //    ticketService.TicketAdd(tickets);
-        //    return RedirectToAction("Index");
-        //}
         [Authorize(Roles = "SuperAdmin")]
         public IActionResult DeleteTicket(int id)
         {
