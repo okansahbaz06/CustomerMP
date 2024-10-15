@@ -7,7 +7,6 @@
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
-        public string HomePhoneNo { get; set; }
         public string WorkPhoneNo { get; set; }
         public string MobilePhoneNo { get; set; }
         public string HomeAdress { get; set; }

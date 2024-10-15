@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutNavbar.cshtml";
+
+}
+<head>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background-color: #e0fbff;">
+    <div class="pl-4 pt-4">
+        <div class="md-1">
+            <h3 class="bold mb-1 pl-3">Müşteri Ekle</h3>
+
+            <br />
+            <form method="post">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="mb-1 pl-3">
+                            <label style="font-weight:bold">Adınız: </label>
+                            <input type="text" class="form-control" name="Name" placeholder="" required="" />
+                        </div>
+                        <div class="mb-1 pl-3">
+                            <label style="font-weight:bold">Soyadınız: </label>
+                            <input type="text" class="form-control" name="Surname" placeholder="" required="" />
+                        </div>
+                        <div class=" mb-1 pl-3">
+                            <label style="font-weight:bold">Tc Kimlik No: </label>
+                            <input maxlength="11" type="text" class="form-control" name="Tc" placeholder="" required="" />
+                        </div>
+                        <div class=" mb-1 pl-3">
+                            <label style="font-weight:bold">E-Mail: </label>
+                            <input type="email" class="form-control" name="Email" placeholder="" required="" />
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class=" mb-1 pl-3">
+                            <label style="font-weight:bold">İş Telefonu: </label>
+                            <input type="text" class="form-control" name="WorkPhoneNo" placeholder="" required="" />
+                        </div>
+                        <div class=" mb-1 pl-3">
+                            <label style="font-weight:bold">Mobil: </label>
+                            <input maxlength="11" type="text" class="form-control" name="MobilePhoneNo" placeholder="" required="" />
+                        </div>
+
+                        <div class=" mb-1 pl-3">
+                            <label style="font-weight:bold">Ev Adresi: </label>
+                            <input type="text" class="form-control" name="HomeAdress" placeholder="" required="" />
+                        </div>
+                        <div class=" mb-1 pl-3">
+                            <label style="font-weight:bold">İş Adresi: </label>
+                            <input type="text" class="form-control" name="WorkAdress" placeholder="" required="" />
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class=" pt-4 pl-3">
+                    <button type="submit" class="btn btn-success">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,58 @@
+﻿@model CustomerMP.Entities.Entities.Ticket
+@{
+    ViewBag.Title = "Update Ticket";
+    Layout = "~/Views/Shared/_LayoutNavbar.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background-color: #e0fbff;">
+    <div class="md-5">
+        <h3 class="bold ml-3 mt-3">Bilet Düzenle</h3>
+        <br />
+        <form method="post">
+            <div class="row">
+
+                <div class="col-md-6 mb-1 ml-3">
+                    <label style="padding-right:45px;">Bilet Numarası </label>
+                    <input type="text" value="@Model.TicketNo" class="col-sm-4 form-control" name="TicketNo" placeholder="" required="" />
+                </div>
+                <br />
+                <div class="col-md-6 mb-1 ml-3">
+                    <label style="padding-right:25px;">Detay </label>
+                    <input type="text" value="@Model.Detail" class="col-sm-4 form-control" name="Detail" placeholder="" required="" />
+                </div>
+                <br />
+                <div class="col-md-6 mb-1 ml-3">
+                    <label for="">Yer </label>
+                    <input type="text" value="@Model.Location" class="col-sm-4 form-control" name="Location" required="" />
+                </div>
+                <br />
+                <div class="col-md-6 mb-1 ml-3">
+                    <label style="padding-right:43px;">Zaman </label>
+                    <input type="text" value="@Model.Time" class="col-sm-4 form-control" name="Time" placeholder="" required="" />
+                </div>
+                <br />
+
+                <div class="col-md-6 mb-1 ml-3">
+                    <label style="padding-right:25px;">Bilet Sahibi (Müşteri) </label>
+                    <select name="CustomerId" class="col-sm-4 form-control">
+                        <option value="">Müşteri Yok</option> <!-- Boş müşteri seçeneği -->
+                        @foreach (var customer in ViewBag.Customers)
+                        {
+                            <option value="@customer.Id" @(customer.Id == Model.CustomerId ? "selected" : "")>
+                                @customer.Name @customer.Surname
+                            </option>
+                        }
+                    </select>
+                </div>
+                <br />
+
+                <div class="col-md-6 mb-1 pt-5 ml-3">
+                    <button type="submit" class="btn btn-success">Güncelle</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>

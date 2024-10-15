@@ -5,11 +5,11 @@ namespace CustomerMP.Service.Contracts
 {
     public interface ICustomerService
     {
-        void CustomerAdd(Customers customer);
-        void CustomerDelete(Customers customer);
-        void CustomerUpdate(Customers customer);
-        List<Customers> GetList();
-        Customers GetById(int id);
+        void CustomerAdd(Customer customer);
+        void CustomerDelete(Customer customer);
+        void CustomerUpdate(Customer customer);
+        List<Customer> GetList();
+        Customer GetById(int id);
 
     }
 }

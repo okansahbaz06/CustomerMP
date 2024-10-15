@@ -3,16 +3,19 @@ using CustomerMP.Entities.Entities;
 using CustomerMP.Service;
 using CustomerMP.UI.Helper;
 using CustomerMP.UI.Views.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace CustomerMP.UI.Controllers
 {
-  
-    
+
+    [Authorize(Roles = "SuperAdmin, Admin")]
     public class CustomerController : Controller
     {
         CustomerService customerService = new CustomerService(new CustomerRepository());
+
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Index()
         {
@@ -30,7 +33,6 @@ namespace CustomerMP.UI.Controllers
                 customer.Surname = value.Surname;
                 customer.MobilePhoneNo = value.MobilePhoneNo;
                 customer.HomeAdress = value.HomeAdress;
-                customer.HomePhoneNo= value.HomePhoneNo;
                 customer.Tc= value.Tc;
                 customer.WorkPhoneNo= value.WorkPhoneNo;
                 customer.WorkAdress= value.WorkAdress;
@@ -42,12 +44,19 @@ namespace CustomerMP.UI.Controllers
 
             return View(customers);
         }
+        [Authorize(Roles = "SuperAdmin")]
         [HttpPost]
-        public IActionResult Index(Customers customers)
+        public IActionResult AddCustomer(Customer customers)
         {
             customerService.CustomerAdd(customers);
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public IActionResult AddCustomer()
+        {
+            return View();
+        }
+        [Authorize(Roles = "SuperAdmin")]
         public IActionResult DeleteCustomer(int id)
         {
             var customer = customerService.GetById(id);
@@ -55,15 +64,16 @@ namespace CustomerMP.UI.Controllers
             return RedirectToAction("Index");
 
         }
-
+        [Authorize(Roles = "SuperAdmin")]
         [HttpGet]
         public IActionResult UpdateCustomer(int id)
         {
             var customer = customerService.GetById(id);
             return View(customer);
         }
+        [Authorize(Roles = "SuperAdmin")]
         [HttpPost]
-        public IActionResult UpdateCustomer(Customers customers)
+        public IActionResult UpdateCustomer(Customer customers)
         {
             customerService.CustomerUpdate(customers);
             return RedirectToAction("Index");

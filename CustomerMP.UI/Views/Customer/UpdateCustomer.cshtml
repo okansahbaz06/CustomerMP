@@ -1,101 +1,71 @@
-﻿@model CustomerMP.Entities.Entities.Customers
+﻿@model CustomerMP.Entities.Entities.Customer
 @{
-    Layout = null;
+    ViewBag.Title = "Update Customer";
+    Layout = "~/Views/Shared/_LayoutNavbar.cshtml";
 }
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-@*
-    <style>
-    .button {
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    }
-
-    .button1 {background-color: #4CAF50;} /* Green */
-    input[type=text] {
-    width: 30%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 1px solid #555;
-    outline: none;
-    }
-
-    input[type=text]:focus {
-    background-color: lightblue;
-    }
-    </style>*@
-<div class="md-5">
-<h3 class="bold ml-3">Müşteri Düzenle</h3>
-<br />
-<form method="post">
-    <div class="row">
-
-        <div class="col-md-6 mb-1 ml-3">
-            <label style="padding-right:45px;">Adınız: </label>
-            <input type="text" value="@Model.Name" class="col-sm-4 form-control" name="Name" placeholder="" required="" />
-        </div>
-            <br />
-          <div class="col-md-6 mb-1 ml-3">
-            <label style="padding-right:25px;">Soyadınız: </label>
-            <input type="text" value="@Model.Surname" class="col-sm-4 form-control" name="Surname" placeholder="" required="" />
-        </div>
-    
+<body style="background-color: #e0fbff;">
+    <div class="md-5">
+        <h3 class="bold ml-3 mt-3">Müşteri Düzenle</h3>
         <br />
-        <div class="col-md-6 mb-1 ml-3">
-            <label for="">Tc Kimlik No: </label>
-            <input type="text" value="@Model.Tc" class="col-sm-4 form-control" name="Tc" required="" />
-        </div>
-        <br />
-        <div class="col-md-6 mb-1 ml-3">
-            <label style="padding-right:43px;">E-Mail: </label>
-            <input type="text" value="@Model.Email" class="col-sm-4 form-control" name="Email" placeholder="" required="" />
-        </div>
-        <br />
+        <form method="post">
+            <div class="row">
+                <div class="col-3">
+                    <div class="mb-1 ml-3">
+                        <label style="padding-right:45px;">Adınız: </label>
+                        <input type="text" value="@Model.Name" class="col-sm-4 form-control" name="Name" placeholder="" required="" />
+                    </div>
+                    <br />
+                    <div class="mb-1 ml-3">
+                        <label style="padding-right:25px;">Soyadınız: </label>
+                        <input type="text" value="@Model.Surname" class="col-sm-4 form-control" name="Surname" placeholder="" required="" />
+                    </div>
 
-        <div class="col-md-6 mb-1 ml-3">
-            <label style="padding-right:10px;">Ev Telefonu: </label>
-            <input type="text" value="@Model.HomePhoneNo" class="col-sm-4 form-control" name="HomePhoneNo" placeholder="" required="" />
-        </div>
-        <br />
+                    <br />
+                    <div class="mb-1 ml-3">
+                        <label for="">Tc Kimlik No: </label>
+                        <input type="text" value="@Model.Tc" class="col-sm-4 form-control" name="Tc" required="" />
+                    </div>
+                    <br />
+                    <div class="mb-1 ml-3">
+                        <label style="padding-right:43px;">E-Mail: </label>
+                        <input type="text" value="@Model.Email" class="col-sm-4 form-control" name="Email" placeholder="" required="" />
+                    </div>
+                    <br />
+                </div>
+                <div class="col-3">
+                    <div class=" mb-1 ml-3">
+                        <label style="padding-right:17px;">İş Telefonu: </label>
+                        <input type="text" value="@Model.WorkPhoneNo" class="col-sm-4 form-control" name="WorkPhoneNo" placeholder="" required="" />
+                    </div>
+                    <br />
 
-        <div class="col-md-6 mb-1 ml-3">
-            <label style="padding-right:17px;">İş Telefonu: </label>
-            <input type="text" value="@Model.WorkPhoneNo" class="col-sm-4 form-control" name="WorkPhoneNo" placeholder="" required="" />
-        </div>
-        <br />
+                    <div class="mb-1 ml-3">
+                        <label style="padding-right:49px;">Mobil: </label>
+                        <input type="text" value="@Model.MobilePhoneNo" class="col-sm-4 form-control" name="MobilePhoneNo" placeholder="" required="" />
+                    </div>
+                    <br />
 
-        <div class="col-md-6 mb-1 ml-3">
-            <label style="padding-right:49px;">Mobil: </label>
-            <input type="text" value="@Model.MobilePhoneNo" class="col-sm-4 form-control" name="MobilePhoneNo" placeholder="" required="" />
-        </div>
-        <br />
+                    <div class="mb-1 ml-3">
+                        <label style="padding-right:25px;">Ev Adresi: </label>
+                        <input type="text" value="@Model.HomeAdress" class="col-sm-4 form-control" name="HomeAdress" placeholder="" required="" />
+                    </div>
+                    <br />
 
-        <div class="col-md-6 mb-1 ml-3">
-            <label style="padding-right:25px;">Ev Adresi: </label>
-            <input type="text" value="@Model.HomeAdress" class="col-sm-4 form-control" name="HomeAdress" placeholder="" required="" />
-        </div>
-        <br />
+                    <div class="mb-1 ml-3">
+                        <label style="padding-right:31px;">İş Adresi: </label>
+                        <input type="text" value="@Model.WorkAdress" class="col-sm-4 form-control" name="WorkAdress" placeholder="" required="" />
+                    </div>
+                    <br />
+                </div>
 
-        <div class="col-md-6 mb-1 ml-3">
-            <label style="padding-right:31px;">İş Adresi: </label>
-            <input type="text" value="@Model.WorkAdress" class="col-sm-4 form-control" name="WorkAdress" placeholder="" required="" />
-        </div>
-        <br />
+                <div class="mb-1 pt-5 ml-3">
+                    <button type="submit" class="btn btn-success">Güncelle</button>
+                </div>
+            </div>
 
-
-        <div class="col-md-6 mb-1 pt-5 ml-3">
-            <button type="submit" class="btn btn-success">Güncelle</button>
-        </div>
+        </form>
     </div>
-
-</form>
-</div>
+</body>

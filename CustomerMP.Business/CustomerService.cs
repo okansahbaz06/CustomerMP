@@ -7,37 +7,37 @@ namespace CustomerMP.Service
 {
     public class CustomerService : ICustomerService
     {
-        ICustomerRepository _customerRepository;
+        private readonly ICustomerRepository _customerRepository;
 
         public CustomerService(ICustomerRepository customerRepository)
         {
             _customerRepository = customerRepository;
         }
 
-        public void CustomerAdd(Customers customer)
+        public void CustomerAdd(Customer customer)
         {
             _customerRepository.Insert(customer);
         }
 
-        public void CustomerDelete(Customers customer)
+        public void CustomerDelete(Customer customer)
         {
             _customerRepository.Delete(customer);
 
         }
 
-        public void CustomerUpdate(Customers customer)
+        public void CustomerUpdate(Customer customer)
         {
             _customerRepository.Update(customer);
 
         }
 
-        public Customers GetById(int id)
+        public Customer GetById(int id)
         {
             return _customerRepository.GetById(id);
 
         }
 
-        public List<Customers> GetList()
+        public List<Customer> GetList()
         {
             return _customerRepository.GetAll();
 

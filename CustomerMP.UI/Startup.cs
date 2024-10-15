@@ -1,6 +1,9 @@
 
 using CustomerMP.DataLayer;
 using CustomerMP.DataLayer.Contracts;
+using CustomerMP.Service;
+using CustomerMP.Service.Contracts;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,10 +24,19 @@ namespace CustomerMP.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-       
-            services.AddControllers();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.LoginPath = "/Login/Login";
+                options.AccessDeniedPath = "/Login/AccessDenied";
+            });
 
+            services.AddAuthorization();
+            services.AddControllersWithViews();
+            //services.AddControllers();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ITicketRepository, TicketRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<> ));
             services.AddMvc();
         }
@@ -36,11 +48,15 @@ namespace CustomerMP.UI
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            else
+            {
+                app.UseExceptionHandler("/Login/AccessDenied");
+                app.UseHsts();
+            }
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -52,7 +68,7 @@ namespace CustomerMP.UI
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Customer}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=Login}/{id?}");
             });
 
         }
