@@ -11,6 +11,6 @@ namespace CustomerMP.UI.Views.Models
         public string Location { get; set; }
         public string Time { get; set; }
         public int? CustomerId { get; set; }
-        public Customer? Customer { get; set; }
+        public Customer Customer { get; set; }
     }
 }

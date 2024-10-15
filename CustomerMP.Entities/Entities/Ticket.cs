@@ -20,6 +20,6 @@ namespace CustomerMP.Entities.Entities
 
         [ForeignKey("Customer")]
         public int? CustomerId { get; set; }
-        public Customer? Customer { get; set; }
+        public Customer Customer { get; set; }
     }
 }
