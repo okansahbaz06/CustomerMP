@@ -7,13 +7,10 @@ using System.Threading.Tasks;
 
 namespace CustomerMP.DataLayer.Contracts
 {
-    public interface IUserRepository
+    public interface IUserRepository : IGenericRepository<User>
     {
         public User GetUserByUsernameAndPassword(string username, string password);
         public User GetUserByUsername(string username);
-        public void AddUser(User user);
-        public void UpdateUser(User user);
-        public void DeleteUser(User user);
 
     }
 }

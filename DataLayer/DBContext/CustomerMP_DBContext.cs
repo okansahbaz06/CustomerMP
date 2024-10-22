@@ -27,7 +27,7 @@ namespace CustomerMP.DataLayer.DBContext
                     Id = 1,
                     Username = "superadmin",
                     Password = "admin", 
-                    Role = "Admin"
+                    Role = "SuperAdmin"
                 },
                 new User
                 {

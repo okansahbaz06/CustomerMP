@@ -1,14 +1,16 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace CustomerMP.DataLayer.Contracts
 {
     public interface IGenericRepository<T> where T : class
     {
-        void Insert(T t);
+        Task AddAsync(T t);
         void Delete(T t);
         void Update(T t);
-        List<T> GetAll();
-        T GetById(int id);
+        IQueryable<T> GetAll();
+        Task<T> GetByIdAsync(int id);
 
     }
 }

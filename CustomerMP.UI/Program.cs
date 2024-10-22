@@ -1,5 +1,5 @@
-using CustomerMP.DataLayer;
 using CustomerMP.DataLayer.Contracts;
+using CustomerMP.DataLayer.Repositories;
 using CustomerMP.Service;
 using CustomerMP.Service.Contracts;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -15,7 +15,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.LoginPath = "/Login/Login";
         options.AccessDeniedPath = "/Login/AccessDenied";
     });
-
+builder.Services.AddMemoryCache();
 builder.Services.AddAuthorization();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -38,7 +38,7 @@ app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseStaticFiles();
 app.MapControllers();
 app.MapControllerRoute(
     name: "default",

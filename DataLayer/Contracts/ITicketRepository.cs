@@ -9,6 +9,6 @@ namespace CustomerMP.DataLayer.Contracts
 {
     public interface ITicketRepository : IGenericRepository<Ticket>
     {
-        public List<Ticket> GetList();
+        Task<IEnumerable<Ticket>> GetListAsync();
     }
 }

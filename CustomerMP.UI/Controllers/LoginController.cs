@@ -4,12 +4,9 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CustomerMP.Service;
 using CustomerMP.UI.Views.Models;
-using CustomerMP.Entities.Entities;
-using System.Linq;
-using CustomerMP.Service.Contracts;
-using CustomerMP.DataLayer;
+using CustomerMP.Service.Services;
+using CustomerMP.DataLayer.Repositories;
 
 namespace CustomerMP.UI.Controllers
 {

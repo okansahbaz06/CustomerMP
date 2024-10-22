@@ -1,14 +1,12 @@
-﻿using CustomerMP.DataLayer;
+﻿using CustomerMP.DataLayer.Repositories;
 using CustomerMP.Entities.Entities;
-using CustomerMP.Service;
-using CustomerMP.Service.Contracts;
-using CustomerMP.UI.Helper;
+using CustomerMP.Service.Services;
 using CustomerMP.UI.Views.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
-using System.Data;
+using System.Threading.Tasks;
 
 namespace CustomerMP.UI.Controllers
 {
@@ -20,9 +18,9 @@ namespace CustomerMP.UI.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var values = ticketService.GetAllTicketByCustomer();
+            var values = await ticketService.GetAllTicketByCustomer();
             var tickets = new List<TicketModel>();
 
             foreach (var value in values)
@@ -55,15 +53,15 @@ namespace CustomerMP.UI.Controllers
 
         [Authorize(Roles = "SuperAdmin")]
         [HttpGet]
-        public IActionResult AddTicket()
+        public async Task<IActionResult> AddTicket()
         {
-            var customers = customerService.GetList();
+            var customers = await customerService.GetAllAsync();
             ViewBag.Customers = new SelectList(customers, "Id", "Name");
             return View();
         }
         [Authorize(Roles = "SuperAdmin")]
         [HttpPost]
-        public IActionResult AddTicket(TicketModel ticketModel)
+        public async Task<IActionResult> AddTicket(TicketModel ticketModel)
         {
             var ticket = new Ticket
             {
@@ -74,24 +72,24 @@ namespace CustomerMP.UI.Controllers
                 CustomerId = ticketModel.CustomerId
             };
 
-            ticketService.TicketAdd(ticket);
+            await ticketService.TicketAddAsync(ticket);
             return RedirectToAction("Index");
         }
 
         [Authorize(Roles = "SuperAdmin")]
-        public IActionResult DeleteTicket(int id)
+        public async Task<IActionResult> DeleteTicket(int id)
         {
-            var ticket = ticketService.GetById(id);
+            var ticket = await ticketService.GetByIdAsync(id);
             ticketService.TicketDelete(ticket);
             return RedirectToAction("Index");
 
         }
         [Authorize(Roles = "SuperAdmin")]
         [HttpGet]
-        public IActionResult UpdateTicket(int id)
+        public async Task<IActionResult> UpdateTicket(int id)
         {
-            var ticket = ticketService.GetById(id);
-            var customers = customerService.GetList();
+            var ticket = await ticketService.GetByIdAsync(id);
+            var customers = await customerService.GetAllAsync();
             ViewBag.Customers = customers;
             return View(ticket);
         }

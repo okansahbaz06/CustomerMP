@@ -9,10 +9,10 @@ namespace CustomerMP.Service.Contracts
 {
     public interface ITicketService
     {
-        void TicketAdd(Ticket ticket);
+        Task<Ticket> TicketAddAsync(Ticket ticket);
         void TicketDelete(Ticket ticket);
         void TicketUpdate(Ticket ticket);
-        List<Ticket> GetList();
-        Ticket GetById(int id);
+        Task<IEnumerable<Ticket>> GetAllAsync();
+        Task<Ticket> GetByIdAsync(int id);
     }
 }
