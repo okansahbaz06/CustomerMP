@@ -1,6 +1,7 @@
 ﻿using CustomerMP.DataLayer;
 using CustomerMP.DataLayer.Repositories;
 using CustomerMP.Entities.Entities;
+using CustomerMP.Service.Contracts;
 using CustomerMP.Service.Services;
 using CustomerMP.UI.Helper;
 using CustomerMP.UI.Views.Models;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -18,59 +20,32 @@ namespace CustomerMP.UI.Controllers
     [Authorize(Roles = "SuperAdmin, Admin")]
     public class CustomerController : Controller
     {
-        CustomerService customerService = new CustomerService(new CustomerRepository());
-        private readonly IMemoryCache _cache;
+        private readonly CustomerService _customerService;
+        //private readonly IMemoryCache _cache;
+        private readonly CustomerHelper _customerHelper;
 
-        public CustomerController(IMemoryCache cache)
+        public CustomerController(CustomerHelper customerHelper)
         {
-            _cache = cache;
+            _customerHelper = customerHelper;
+            _customerService = new CustomerService(new CustomerRepository());
         }
 
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            string cacheKey = "customerList";
-
-            if (!_cache.TryGetValue(cacheKey, out List<CustomerModel> customers))
-            {
-                var values = await customerService.GetAllAsync();
-
-                customers = new List<CustomerModel>();
-                foreach (var value in values)
-                {
-                    var customer = new CustomerModel
-                    {
-                        Id = value.Id,
-                        Email = value.Email,
-                        Name = value.Name,
-                        Surname = value.Surname,
-                        MobilePhoneNo = value.MobilePhoneNo,
-                        HomeAdress = value.HomeAdress,
-                        Tc = value.Tc,
-                        WorkPhoneNo = value.WorkPhoneNo,
-                        WorkAdress = value.WorkAdress,
-                        Siradisimi = ExtraordinaryHelper.IsExtraordinary(value.Name) ? "Evet" : "Hayır"
-                    };
-
-                    customers.Add(customer);
-                }
-
-                // Cache'e ekleyelim (10 dakika boyunca saklasın)
-                var cacheOptions = new MemoryCacheEntryOptions()
-                    .SetSlidingExpiration(TimeSpan.FromMinutes(10));
-
-                _cache.Set(cacheKey, customers, cacheOptions);
-            }
+            
+            var values = (await _customerService.GetAllAsync()).ToList();
+            var customers = _customerHelper.MapCustomers(values);
 
             return View(customers);
         }
-    
-    [Authorize(Roles = "SuperAdmin")]
+
+        [Authorize(Roles = "SuperAdmin")]
         [HttpPost]
         public async Task<IActionResult> AddCustomer(Customer customers)
         {
-            await customerService.CustomerAddAsync(customers);
+            await _customerService.CustomerAddAsync(customers);
             return RedirectToAction("Index");
         }
         [HttpGet]
@@ -81,8 +56,8 @@ namespace CustomerMP.UI.Controllers
         [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {
-            var customer =  await customerService.GetByIdAsync(id);
-            customerService.CustomerDelete(customer);
+            var customer =  await _customerService.GetByIdAsync(id);
+            _customerService.CustomerDelete(customer);
             return RedirectToAction("Index");
 
         }
@@ -90,14 +65,14 @@ namespace CustomerMP.UI.Controllers
         [HttpGet]
         public async Task<IActionResult> UpdateCustomer(int id)
         {
-            var customer = await customerService.GetByIdAsync(id);
+            var customer = await _customerService.GetByIdAsync(id);
             return View(customer);
         }
         [Authorize(Roles = "SuperAdmin")]
         [HttpPost]
         public IActionResult UpdateCustomer(Customer customers)
         {
-            customerService.CustomerUpdate(customers);
+            _customerService.CustomerUpdate(customers);
             return RedirectToAction("Index");
 
         }

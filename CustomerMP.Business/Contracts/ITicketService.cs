@@ -13,6 +13,7 @@ namespace CustomerMP.Service.Contracts
         void TicketDelete(Ticket ticket);
         void TicketUpdate(Ticket ticket);
         Task<IEnumerable<Ticket>> GetAllAsync();
+        Task<IEnumerable<Ticket>> GetAllTicketByCustomerAsync();
         Task<Ticket> GetByIdAsync(int id);
     }
 }

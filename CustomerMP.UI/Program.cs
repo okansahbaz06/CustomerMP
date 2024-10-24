@@ -2,6 +2,7 @@ using CustomerMP.DataLayer.Contracts;
 using CustomerMP.DataLayer.Repositories;
 using CustomerMP.Service;
 using CustomerMP.Service.Contracts;
+using CustomerMP.UI.Helper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,9 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ITicketRepository, TicketRepository>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<CustomerHelper>();
+builder.Services.AddScoped<TicketHelper>();
+
 
 var app = builder.Build();
 

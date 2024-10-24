@@ -32,7 +32,7 @@ namespace CustomerMP.Service.Services
             return await _ticketRepository.GetAll().ToListAsync();
 
         }
-        public async Task<IEnumerable<Ticket>> GetAllTicketByCustomer()
+        public async Task<IEnumerable<Ticket>> GetAllTicketByCustomerAsync()
         {
             return await _ticketRepository.GetListAsync();
         }
