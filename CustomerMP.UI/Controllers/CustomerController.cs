@@ -21,31 +21,43 @@ namespace CustomerMP.UI.Controllers
     public class CustomerController : Controller
     {
         private readonly CustomerService _customerService;
-        //private readonly IMemoryCache _cache;
+        private readonly IMemoryCache _cache;
         private readonly CustomerHelper _customerHelper;
 
-        public CustomerController(CustomerHelper customerHelper)
+        public CustomerController(CustomerHelper customerHelper, IMemoryCache cache)
         {
             _customerHelper = customerHelper;
             _customerService = new CustomerService(new CustomerRepository());
+            _cache = cache;
         }
-
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            
-            var values = (await _customerService.GetAllAsync()).ToList();
-            var customers = _customerHelper.MapCustomers(values);
+            string cacheKey = "customerList";
+            if (!_cache.TryGetValue(cacheKey, out List<CustomerModel> customers))
+            {
+                var values = (await _customerService.GetAllAsync()).ToList();
+
+                // Helper sınıfını kullanarak biletleri mapleyelim
+                customers = _customerHelper.MapCustomers(values);
+
+                var cacheOptions = new MemoryCacheEntryOptions()
+                    .SetSlidingExpiration(TimeSpan.FromMinutes(10));
+
+                _cache.Set(cacheKey, customers, cacheOptions);
+            }
 
             return View(customers);
         }
+
 
         [Authorize(Roles = "SuperAdmin")]
         [HttpPost]
         public async Task<IActionResult> AddCustomer(Customer customers)
         {
             await _customerService.CustomerAddAsync(customers);
+            _cache.Remove("customerList");
             return RedirectToAction("Index");
         }
         [HttpGet]
@@ -58,6 +70,7 @@ namespace CustomerMP.UI.Controllers
         {
             var customer =  await _customerService.GetByIdAsync(id);
             _customerService.CustomerDelete(customer);
+            _cache.Remove("customerList");
             return RedirectToAction("Index");
 
         }
@@ -73,6 +86,7 @@ namespace CustomerMP.UI.Controllers
         public IActionResult UpdateCustomer(Customer customers)
         {
             _customerService.CustomerUpdate(customers);
+            _cache.Remove("customerList");
             return RedirectToAction("Index");
 
         }

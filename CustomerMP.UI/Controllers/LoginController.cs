@@ -7,13 +7,20 @@ using System.Threading.Tasks;
 using CustomerMP.UI.Views.Models;
 using CustomerMP.Service.Services;
 using CustomerMP.DataLayer.Repositories;
+using CustomerMP.UI.Helper;
+using CustomerMP.UI.Enums;
 
 namespace CustomerMP.UI.Controllers
 {
     public class LoginController : Controller
     {
         UserService userService = new UserService(new UserRepository());
+        private readonly DatabaseHelper _databaseHelper;
 
+        public LoginController(DatabaseHelper databaseHelper)
+        {
+            _databaseHelper = databaseHelper;
+        }
 
         public IActionResult Login()
         {
@@ -33,7 +40,7 @@ namespace CustomerMP.UI.Controllers
                     Password = userEntity.Password,
                     Role = userEntity.Role
                 };
-
+                
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, userModel.Username),
@@ -45,6 +52,8 @@ namespace CustomerMP.UI.Controllers
                 await HttpContext.SignInAsync(
                     CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity));
+                var result = "Admin Girişi Yapıldı";
+                _databaseHelper.AddUserLog(UserLogType.UserLogged, result, userModel.Username);
 
                 return RedirectToAction("Index", "Customer"); 
             }
@@ -77,7 +86,8 @@ namespace CustomerMP.UI.Controllers
                 await HttpContext.SignInAsync(
                     CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity));
-
+                var result = "Misafir Girişi Yapıldı";
+                _databaseHelper.AddUserLog(UserLogType.GuestUserLogged, result, guestModel.Username);
                 return RedirectToAction("Index", "Customer");
             }
 

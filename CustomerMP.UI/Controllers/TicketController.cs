@@ -20,46 +20,36 @@ namespace CustomerMP.UI.Controllers
     {
         private readonly TicketService _ticketService;
         private readonly CustomerService _customerService;
-        //private readonly IMemoryCache _cache;
+        private readonly IMemoryCache _cache;
         private readonly TicketHelper _ticketHelper;
 
-        public TicketController(TicketHelper ticketHelper)
+        public TicketController(TicketHelper ticketHelper, IMemoryCache cache)
         {
             _ticketService = new TicketService(new TicketRepository());
             _customerService = new CustomerService(new CustomerRepository());
             _ticketHelper = ticketHelper;
+            _cache = cache;
         }
-
+        #region cache
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var values = await _ticketService.GetAllTicketByCustomerAsync();
-            var tickets = _ticketHelper.MapTickets(values);
+            string cacheKey = "ticketList";
+            if (!_cache.TryGetValue(cacheKey, out List<TicketModel> tickets))
+            {
+                var values = await _ticketService.GetAllTicketByCustomerAsync();
+
+                tickets = _ticketHelper.MapTickets(values);
+
+                var cacheOptions = new MemoryCacheEntryOptions()
+                    .SetSlidingExpiration(TimeSpan.FromMinutes(10));
+
+                _cache.Set(cacheKey, tickets, cacheOptions);
+            }
 
             return View(tickets);
         }
-        #region cache
-        //[AllowAnonymous]
-        //[HttpGet]
-        //public async Task<IActionResult> Index()
-        //{
-        //    string cacheKey = "ticketList";
-        //    if (!_cache.TryGetValue(cacheKey, out List<TicketModel> tickets))
-        //    {
-        //        var values = await _ticketService.GetAllTicketByCustomerAsync();
-
-        //        // Helper sınıfını kullanarak biletleri mapleyelim
-        //        tickets = _ticketHelper.MapTickets(values);
-
-        //        var cacheOptions = new MemoryCacheEntryOptions()
-        //            .SetSlidingExpiration(TimeSpan.FromMinutes(10));
-
-        //        _cache.Set(cacheKey, tickets, cacheOptions);
-        //    }
-
-        //    return View(tickets);
-        //}
         #endregion
 
         [Authorize(Roles = "SuperAdmin")]
@@ -84,6 +74,7 @@ namespace CustomerMP.UI.Controllers
             };
 
             await _ticketService.TicketAddAsync(ticket);
+            _cache.Remove("ticketList");
             return RedirectToAction("Index");
         }
 
@@ -92,6 +83,7 @@ namespace CustomerMP.UI.Controllers
         {
             var ticket = await _ticketService.GetByIdAsync(id);
             _ticketService.TicketDelete(ticket);
+            _cache.Remove("ticketList");
             return RedirectToAction("Index");
 
         }
@@ -113,6 +105,7 @@ namespace CustomerMP.UI.Controllers
                 ticket.CustomerId = null;
             }
             _ticketService.TicketUpdate(ticket);
+            _cache.Remove("ticketList");
             return RedirectToAction("Index");
         }
     }

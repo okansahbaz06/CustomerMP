@@ -119,6 +119,31 @@ namespace CustomerMP.DataLayer.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("CustomerMP.Entities.Entities.UserLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserLogType")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserLogs");
+                });
+
             modelBuilder.Entity("CustomerMP.Entities.Entities.Ticket", b =>
                 {
                     b.HasOne("CustomerMP.Entities.Entities.Customer", "Customer")

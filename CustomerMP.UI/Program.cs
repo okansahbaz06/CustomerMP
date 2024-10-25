@@ -25,6 +25,7 @@ builder.Services.AddScoped<ITicketRepository, TicketRepository>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<CustomerHelper>();
 builder.Services.AddScoped<TicketHelper>();
+builder.Services.AddScoped<DatabaseHelper>();
 
 
 var app = builder.Build();

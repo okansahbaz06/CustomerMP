@@ -15,28 +15,30 @@ namespace CustomerMP.DataLayer.DBContext
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<UserLog> UserLogs { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<User>().HasData(
-                new User
-                {
-                    Id = 1,
-                    Username = "superadmin",
-                    Password = "admin", 
-                    Role = "SuperAdmin"
-                },
-                new User
-                {
-                    Id = 2,
-                    Username = "guest",
-                    Password = "guest",
-                    Role = "Guest"
-                }
-            );
+            //modelBuilder.Entity<User>().HasData(
+            //    new User
+            //    {
+            //        Id = 1,
+            //        Username = "superadmin",
+            //        Password = "admin", 
+            //        Role = "SuperAdmin"
+            //    },
+            //    new User
+            //    {
+            //        Id = 2,
+            //        Username = "guest",
+            //        Password = "guest",
+            //        Role = "Guest"
+            //    }
+            //);
 
         }
     }
