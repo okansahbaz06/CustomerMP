@@ -1,5 +1,6 @@
 ﻿using CustomerMP.DataLayer;
 using CustomerMP.DataLayer.Repositories;
+using CustomerMP.DataLayer.UnitOfWork;
 using CustomerMP.Entities.Entities;
 using CustomerMP.Service.Contracts;
 using CustomerMP.Service.Services;
@@ -20,33 +21,27 @@ namespace CustomerMP.UI.Controllers
     [Authorize(Roles = "SuperAdmin, Admin")]
     public class CustomerController : Controller
     {
-        private readonly CustomerService _customerService;
-        private readonly IMemoryCache _cache;
+        private readonly ICustomerService _customerService;
+        private readonly CacheHelper _cacheHelper;
         private readonly CustomerHelper _customerHelper;
 
-        public CustomerController(CustomerHelper customerHelper, IMemoryCache cache)
+
+        public CustomerController(CustomerHelper customerHelper, CacheHelper cacheHelper, ICustomerService customerService)
         {
             _customerHelper = customerHelper;
-            _customerService = new CustomerService(new CustomerRepository());
-            _cache = cache;
+
+            _cacheHelper = cacheHelper;
+            _customerService = customerService;
         }
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             string cacheKey = "customerList";
-            if (!_cache.TryGetValue(cacheKey, out List<CustomerModel> customers))
-            {
-                var values = (await _customerService.GetAllAsync()).ToList();
-
-                // Helper sınıfını kullanarak biletleri mapleyelim
-                customers = _customerHelper.MapCustomers(values);
-
-                var cacheOptions = new MemoryCacheEntryOptions()
-                    .SetSlidingExpiration(TimeSpan.FromMinutes(10));
-
-                _cache.Set(cacheKey, customers, cacheOptions);
-            }
+            var customers = await _cacheHelper.GetOrCreateAsync(
+                cacheKey,
+                async () => _customerHelper.MapCustomers((await _customerService.GetAllAsync()).ToList())
+            );
 
             return View(customers);
         }
@@ -57,7 +52,7 @@ namespace CustomerMP.UI.Controllers
         public async Task<IActionResult> AddCustomer(Customer customers)
         {
             await _customerService.CustomerAddAsync(customers);
-            _cache.Remove("customerList");
+            _cacheHelper.Remove("customerList");
             return RedirectToAction("Index");
         }
         [HttpGet]
@@ -70,7 +65,7 @@ namespace CustomerMP.UI.Controllers
         {
             var customer =  await _customerService.GetByIdAsync(id);
             _customerService.CustomerDelete(customer);
-            _cache.Remove("customerList");
+            _cacheHelper.Remove("customerList");
             return RedirectToAction("Index");
 
         }
@@ -86,7 +81,7 @@ namespace CustomerMP.UI.Controllers
         public IActionResult UpdateCustomer(Customer customers)
         {
             _customerService.CustomerUpdate(customers);
-            _cache.Remove("customerList");
+            _cacheHelper.Remove("customerList");
             return RedirectToAction("Index");
 
         }

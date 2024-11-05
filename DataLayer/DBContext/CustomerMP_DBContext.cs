@@ -1,5 +1,4 @@
-﻿
-using CustomerMP.Entities.Entities;
+﻿using CustomerMP.Entities.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -7,9 +6,8 @@ namespace CustomerMP.DataLayer.DBContext
 {
     public class CustomerMP_DBContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public CustomerMP_DBContext(DbContextOptions<CustomerMP_DBContext> options) : base(options)
         {
-            optionsBuilder.UseNpgsql("Server=localhost;Port=5432;User Id=postgres;Password=postgres;Database=Customer_MP;");
         }
 
         public DbSet<Customer> Customers { get; set; }
@@ -20,26 +18,7 @@ namespace CustomerMP.DataLayer.DBContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
             base.OnModelCreating(modelBuilder);
-
-            //modelBuilder.Entity<User>().HasData(
-            //    new User
-            //    {
-            //        Id = 1,
-            //        Username = "superadmin",
-            //        Password = "admin", 
-            //        Role = "SuperAdmin"
-            //    },
-            //    new User
-            //    {
-            //        Id = 2,
-            //        Username = "guest",
-            //        Password = "guest",
-            //        Role = "Guest"
-            //    }
-            //);
-
         }
     }
 }

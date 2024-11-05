@@ -1,5 +1,6 @@
 ﻿using CustomerMP.DataLayer.Contracts;
 using CustomerMP.DataLayer.DBContext;
+using CustomerMP.DataLayer.UnitOfWork;
 using CustomerMP.Entities.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,10 +13,13 @@ namespace CustomerMP.DataLayer.Repositories
 {
     public class TicketRepository : GenericRepository<Ticket>, ITicketRepository
     {
-        CustomerMP_DBContext context = new CustomerMP_DBContext();
+        public TicketRepository(IUnitOfWork unitOfWork, CustomerMP_DBContext customerMP_DBContext) : base(unitOfWork, customerMP_DBContext)
+        {
+        }
+
         public async Task<IEnumerable<Ticket>> GetListAsync()
         {
-            return await context.Tickets.Include(t => t.Customer).ToListAsync();
+            return await _context.Tickets.Include(t => t.Customer).ToListAsync();
         }
     }
 }

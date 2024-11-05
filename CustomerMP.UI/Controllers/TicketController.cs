@@ -11,6 +11,7 @@ using Microsoft.Extensions.Caching.Memory;
 using NPoco;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CustomerMP.UI.Controllers
@@ -18,17 +19,18 @@ namespace CustomerMP.UI.Controllers
     [Authorize(Roles = "SuperAdmin, Admin")]
     public class TicketController : Controller
     {
-        private readonly TicketService _ticketService;
-        private readonly CustomerService _customerService;
-        private readonly IMemoryCache _cache;
+        private readonly ITicketService _ticketService;
+        private readonly ICustomerService _customerService;
         private readonly TicketHelper _ticketHelper;
+        private readonly CacheHelper _cacheHelper;
 
-        public TicketController(TicketHelper ticketHelper, IMemoryCache cache)
+        public TicketController(TicketHelper ticketHelper, CacheHelper cacheHelper, ITicketService ticketService, ICustomerService customerService)
         {
-            _ticketService = new TicketService(new TicketRepository());
-            _customerService = new CustomerService(new CustomerRepository());
+
             _ticketHelper = ticketHelper;
-            _cache = cache;
+            _cacheHelper = cacheHelper;
+            _ticketService = ticketService;
+            _customerService = customerService;
         }
         #region cache
         [AllowAnonymous]
@@ -36,17 +38,10 @@ namespace CustomerMP.UI.Controllers
         public async Task<IActionResult> Index()
         {
             string cacheKey = "ticketList";
-            if (!_cache.TryGetValue(cacheKey, out List<TicketModel> tickets))
-            {
-                var values = await _ticketService.GetAllTicketByCustomerAsync();
-
-                tickets = _ticketHelper.MapTickets(values);
-
-                var cacheOptions = new MemoryCacheEntryOptions()
-                    .SetSlidingExpiration(TimeSpan.FromMinutes(10));
-
-                _cache.Set(cacheKey, tickets, cacheOptions);
-            }
+            var tickets = await _cacheHelper.GetOrCreateAsync(
+                cacheKey,
+                async () => _ticketHelper.MapTickets((await _ticketService.GetAllTicketByCustomerAsync()).ToList())
+            );
 
             return View(tickets);
         }
@@ -74,7 +69,7 @@ namespace CustomerMP.UI.Controllers
             };
 
             await _ticketService.TicketAddAsync(ticket);
-            _cache.Remove("ticketList");
+            _cacheHelper.Remove("ticketList");
             return RedirectToAction("Index");
         }
 
@@ -83,7 +78,7 @@ namespace CustomerMP.UI.Controllers
         {
             var ticket = await _ticketService.GetByIdAsync(id);
             _ticketService.TicketDelete(ticket);
-            _cache.Remove("ticketList");
+            _cacheHelper.Remove("ticketList");
             return RedirectToAction("Index");
 
         }
@@ -105,7 +100,7 @@ namespace CustomerMP.UI.Controllers
                 ticket.CustomerId = null;
             }
             _ticketService.TicketUpdate(ticket);
-            _cache.Remove("ticketList");
+            _cacheHelper.Remove("ticketList");
             return RedirectToAction("Index");
         }
     }

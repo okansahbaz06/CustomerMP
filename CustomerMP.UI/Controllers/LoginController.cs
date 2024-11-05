@@ -9,17 +9,20 @@ using CustomerMP.Service.Services;
 using CustomerMP.DataLayer.Repositories;
 using CustomerMP.UI.Helper;
 using CustomerMP.UI.Enums;
+using CustomerMP.Service.Contracts;
 
 namespace CustomerMP.UI.Controllers
 {
     public class LoginController : Controller
     {
-        UserService userService = new UserService(new UserRepository());
+        private readonly IUserService _userService;
         private readonly DatabaseHelper _databaseHelper;
 
-        public LoginController(DatabaseHelper databaseHelper)
+
+        public LoginController(DatabaseHelper databaseHelper, IUserService userService)
         {
             _databaseHelper = databaseHelper;
+            _userService = userService;
         }
 
         public IActionResult Login()
@@ -30,7 +33,7 @@ namespace CustomerMP.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string username, string password)
         {
-            var userEntity = userService.GetUserByUsernameAndPassword(username, password);
+            var userEntity = _userService.GetUserByUsernameAndPassword(username, password);
 
             if (userEntity != null)
             {
@@ -64,7 +67,7 @@ namespace CustomerMP.UI.Controllers
 
         public async Task<IActionResult> GuestLogin()
         {
-            var guestEntity = userService.GetUserByUsername("guest");
+            var guestEntity = _userService.GetUserByUsername("guest");
 
             if (guestEntity != null)
             {
