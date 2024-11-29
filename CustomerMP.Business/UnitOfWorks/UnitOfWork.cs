@@ -19,8 +19,6 @@ namespace CustomerMP.Service.UnitOfWorks
 
         public void Commit()
         {
-            // Nurcan Note :.Result Propety ile method senkron olur.
-            // _context.SaveChangesAsync().Result 
             _context.SaveChanges();
         }
 

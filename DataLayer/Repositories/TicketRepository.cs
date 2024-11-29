@@ -13,7 +13,7 @@ namespace CustomerMP.DataLayer.Repositories
 {
     public class TicketRepository : GenericRepository<Ticket>, ITicketRepository
     {
-        public TicketRepository(IUnitOfWork unitOfWork, CustomerMP_DBContext customerMP_DBContext) : base(unitOfWork, customerMP_DBContext)
+        public TicketRepository(IUnitOfWork unitOfWork, CustomerMP_DBContext dbcontext) : base(unitOfWork, dbcontext)
         {
         }
 

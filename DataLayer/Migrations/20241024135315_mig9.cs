@@ -25,12 +25,26 @@ namespace CustomerMP.DataLayer.Migrations
                 {
                     table.PrimaryKey("PK_UserLogs", x => x.Id);
                 });
+
+            // User seed data
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Username", "Password", "Role" },
+                values: new object[] { 1, "superadmin", "admin", "SuperAdmin" }
+            );
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "UserLogs");
+
+            // Eklenen User verisini sil
+            migrationBuilder.DeleteData(
+                table: "Users",
+                keyColumn: "Id",
+                keyValue: 1
+            );
         }
     }
 }

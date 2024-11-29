@@ -9,7 +9,7 @@ namespace CustomerMP.DataLayer.Repositories
 {
     public class UserRepository : GenericRepository<User>, IUserRepository
     {
-        public UserRepository(IUnitOfWork unitOfWork, CustomerMP_DBContext customerMP_DBContext) : base(unitOfWork, customerMP_DBContext)
+        public UserRepository(IUnitOfWork unitOfWork, CustomerMP_DBContext dbcontext) : base(unitOfWork, dbcontext)
         {
         }
 
